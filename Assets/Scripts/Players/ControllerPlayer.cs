@@ -34,7 +34,7 @@ public class ControllerPlayer : MonoBehaviour
     }
 
     //Damage не работает хуй знает почему
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)//OnTriggerEnter2D
     {
         if(collision.gameObject.tag == "Asteroid")
         {
