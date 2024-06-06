@@ -7,13 +7,18 @@ public class CameraBoundaries : MonoBehaviour
     public Camera cam;
     private Vector2 screenBounds;
 
-    void Start()
+    private void Start()
     {
         cam = Camera.main;
         screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
     }
 
-    void Update()
+    private void Update()
+    {
+        Restriction();
+    }
+
+    private void Restriction()
     {
         Vector3 pos = transform.position;
 
