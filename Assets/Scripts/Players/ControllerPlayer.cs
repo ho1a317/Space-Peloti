@@ -33,15 +33,16 @@ public class ControllerPlayer : MonoBehaviour
         derY = joystick.Vertical * speed;
     }
 
-    //Damage не работает хуй знает почему
-    private void OnCollisionEnter2D(Collision2D collision)//OnTriggerEnter2D
+    //Damage смерть и ефекты 
+    //OnTriggerEnter2D   OnCollisionEnter2D
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Asteroid")
+        if (collision.gameObject.tag == "Asteroid")
         {
             hp--;
 
             Debug.Log(hp);
         }
     }
-
+    
 }

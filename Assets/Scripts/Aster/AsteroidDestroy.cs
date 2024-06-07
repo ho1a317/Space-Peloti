@@ -27,6 +27,16 @@ public class AsteroidDestroy : MonoBehaviour
                 ac.asteroidNow--; 
             }
         }
-        
+        // поменять на ефекты
+        if (coll.gameObject.CompareTag("Player"))
+        {
+            Destroy(asteroid);
+
+            if (ac != null)
+            {
+                ac.asteroidNow--;
+            }
+        }
+
     }
 }
