@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 464044150592845539}
   - component: {fileID: 4904172434537142043}
   - component: {fileID: 560371732777754922}
+  - component: {fileID: 6534656791398592086}
   m_Layer: 0
   m_Name: AsterMed4
   m_TagString: Asteroid
@@ -203,3 +204,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 5244531253542625422}
+--- !u!114 &6534656791398592086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244531253542625422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ee70b2dacf6d847a9d66aee457a0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1216145651410089323}
   - component: {fileID: 7359680614099946739}
   - component: {fileID: 7153190255287568845}
+  - component: {fileID: 3004290953185650504}
   m_Layer: 0
   m_Name: AsterSmall1
   m_TagString: Asteroid
@@ -215,3 +216,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 8401470177441545106}
+--- !u!114 &3004290953185650504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401470177441545106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ee70b2dacf6d847a9d66aee457a0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
