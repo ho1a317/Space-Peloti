@@ -9,16 +9,22 @@ public class ControllerPlayer : MonoBehaviour
     public float speed;
     public int hp;
 
+    public int damage;
+
     private float derX, derY;
     public Joystick joystick;
 
     public Text Coin;
 
     private Rigidbody2D rb;
+    private Heartsystem heartSystem; 
+    private GameManager gameOverManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        heartSystem = FindObjectOfType<Heartsystem>();
+        gameOverManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -38,7 +44,6 @@ public class ControllerPlayer : MonoBehaviour
     }
 
     //Damage смерть и ефекты 
-    //OnTriggerEnter2D(MB na Coin)   OnCollisionEnter2D
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Asteroid")
@@ -51,19 +56,25 @@ public class ControllerPlayer : MonoBehaviour
             CollectorCoins();
         }
     }
-    // DEL
-    private void Damage()
-    {
-        hp--;
-
-        Debug.Log(hp);
-    }
-
+    
     private void CollectorCoins()
     {
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);
         Coin.text = Convert.ToString(Convert.ToInt32(Coin.text) + 1);
 
     }
+
+    private void Damage()
+    {
+        hp--;
+        heartSystem.TakeDamage(damage);
+        Debug.Log(hp);
+
+        if (hp <= 0)
+        {
+            gameOverManager.Lose();
+        }
+    }
+
 
 }

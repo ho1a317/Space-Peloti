@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObjectDestroy : MonoBehaviour
 {
-    private Spawner ac;
+    private Spawner spaw;
     public GameObject asteroid;
 
     private void Start()
@@ -10,7 +10,7 @@ public class ObjectDestroy : MonoBehaviour
         GameObject spawner = GameObject.Find("Spawner");
         if (spawner != null)
         {
-            ac = spawner.GetComponent<Spawner>();
+            spaw = spawner.GetComponent<Spawner>();
            
         }
         
@@ -33,9 +33,9 @@ public class ObjectDestroy : MonoBehaviour
     {
         Destroy(asteroid);
 
-        if (ac != null)
+        if (spaw != null)
         {
-            ac.asteroidNow--;
+            spaw.asteroidNow--;
         }
     }
 
@@ -43,9 +43,9 @@ public class ObjectDestroy : MonoBehaviour
     {
         Destroy(asteroid);
 
-        if (ac != null)
+        if (spaw != null)
         {
-            ac.asteroidNow--;
+            spaw.asteroidNow--;
         }
     }
 
