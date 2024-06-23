@@ -7,17 +7,16 @@ public class Timer : MonoBehaviour
     public Text timerText; // Текстовый UI элемент
 
     private float timeRemaining;
-    private GameOverManager gameManager;
+    private bool isRunning;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameOverManager>();
         RestartTimer(); // Инициализация таймера
     }
 
     private void Update()
     {
-        if (Time.timeScale > 0)
+        if (isRunning)
         {
             if (timeRemaining > 0)
             {
@@ -26,7 +25,9 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                gameManager.Win();
+                timeRemaining = 0;
+                isRunning = false;
+                FindObjectOfType<GameOverManager>().Win();
             }
         }
     }
@@ -34,6 +35,7 @@ public class Timer : MonoBehaviour
     public void RestartTimer()
     {
         timeRemaining = initialTime;
+        isRunning = true;
         UpdateTimerDisplay();
     }
 

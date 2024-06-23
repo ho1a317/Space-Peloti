@@ -9,24 +9,20 @@ public class LevelManager : MonoBehaviour
 
     private Heartsystem heartSystem;
     private ControllerPlayer controllerPlayer;
-    private Timer timer; // Добавляем переменную для таймера
-
 
     void Start()
     {
         heartSystem = FindObjectOfType<Heartsystem>();
         controllerPlayer = FindObjectOfType<ControllerPlayer>();
-        timer = FindObjectOfType<Timer>(); // Инициализируем таймер
-        LoadLevel(currentLevel); // Загружаем первый уровень
+        LoadLevel(currentLevel); // Загружаем первый уровеньк Покашто
     }
 
     public void LoadLevel(int levelIndex)
     {
-        if (levelIndex < 0 || levelIndex >= levels.Length)
-        {
-            Debug.LogError("Invalid level index");
-            return;
-        }
+        //if (levelIndex < 0 || levelIndex >= levels.Length)
+        //{
+        //    return;
+        //}
 
         // Деактивируем все уровни
         foreach (GameObject level in levels)
@@ -40,21 +36,21 @@ public class LevelManager : MonoBehaviour
         // Перемещаем игрока в стартовую точку
         MovePlayerToStart();
 
-        Debug.Log("Level " + levelIndex + " loaded");
 
-        //// Восстанавливаем здоровье
+        // Восстанавливаем здоровье
         if (controllerPlayer != null)
         {
             Debug.Log("Resetting player health");
             controllerPlayer.ResetHealth();
         }
+
         // Перезапуск таймера
+        Timer timer = levels[levelIndex].GetComponentInChildren<Timer>();
         if (timer != null)
         {
-            Debug.Log("TAIMERRRERRR");
+            Debug.Log("Restarting timer");
             timer.RestartTimer();
         }
-
     }
 
     void MovePlayerToStart()
@@ -70,14 +66,12 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-
     public void NextLevel()
     {
         int nextLevel = currentLevel + 1;
         if (nextLevel < levels.Length)
         {
             LoadLevel(nextLevel);
-           // SaveProgress(nextLevel); // Сохраняем прогресс
         }
         else
         {
@@ -91,15 +85,4 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Restarting level"); // Отладочное сообщение
         LoadLevel(currentLevel);
     }
-
-    //private void SaveProgress(int levelIndex)
-    //{
-    //    PlayerPrefs.SetInt("LastCompletedLevel", levelIndex);
-    //    PlayerPrefs.Save();
-    //}
-
-    //public int GetLastCompletedLevel()
-    //{
-    //    return PlayerPrefs.GetInt("LastCompletedLevel", 0); // По умолчанию 0 (первый уровень)
-    //}
 }
