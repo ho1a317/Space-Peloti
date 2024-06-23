@@ -11,11 +11,15 @@ public class GameOverManager : MonoBehaviour
     public Text timerText;
 
     private LevelManager levelManager;
+    private Spawner spawner;
+    private Timer timer;
 
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        
+        spawner = FindObjectOfType<Spawner>();
+        timer = FindObjectOfType<Timer>();
+
         losePanel.SetActive(false);
         winPanel.SetActive(false);
 
@@ -28,6 +32,11 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 0;
         losePanel.SetActive(true);
 
+        if (spawner != null)
+        {
+            spawner.DestroyAllObjects(); // Уничтожаем все объекты, созданные Spawner
+        }
+
         timerText.enabled = false;
     }
 
@@ -35,6 +44,11 @@ public class GameOverManager : MonoBehaviour
     {
         Time.timeScale = 0;
         winPanel.SetActive(true);
+
+        if (spawner != null)
+        {
+            spawner.DestroyAllObjects(); // Уничтожаем все объекты, созданные Spawner
+        }
 
         timerText.enabled = false;
     }
@@ -53,7 +67,12 @@ public class GameOverManager : MonoBehaviour
     {
         Time.timeScale = 1; // Возвращаем нормальное время
         levelManager.RestartLevel(); // Перезагрузка текущего уровня
-        
+
+        if (timer != null)
+        {
+            timer.RestartTimer();
+        }
+
         losePanel.SetActive(false);
         timerText.enabled = true;
 

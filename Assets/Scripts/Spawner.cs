@@ -35,4 +35,19 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+
+    public void DestroyAllObjects()
+    {
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Asteroid");
+        foreach (GameObject obj in allObjects)
+        {
+            Destroy(obj);
+        }
+
+        allObjects = GameObject.FindGameObjectsWithTag("Coin");
+        foreach (GameObject obj in allObjects)
+        {
+            Destroy(obj);
+        }
+    }
 }

@@ -8,14 +8,15 @@ public class LevelManager : MonoBehaviour
     public GameObject player; // Ссылка на игрока
 
     private Heartsystem heartSystem;
-    private Spawner spawner;
     private ControllerPlayer controllerPlayer;
+    private Timer timer; // Добавляем переменную для таймера
+
 
     void Start()
     {
         heartSystem = FindObjectOfType<Heartsystem>();
-        //spawner = FindObjectOfType<Spawner>();
         controllerPlayer = FindObjectOfType<ControllerPlayer>();
+        timer = FindObjectOfType<Timer>(); // Инициализируем таймер
         LoadLevel(currentLevel); // Загружаем первый уровень
     }
 
@@ -36,7 +37,6 @@ public class LevelManager : MonoBehaviour
         // Активируем нужный уровень
         levels[levelIndex].SetActive(true);
         currentLevel = levelIndex;
-
         // Перемещаем игрока в стартовую точку
         MovePlayerToStart();
 
@@ -48,8 +48,12 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Resetting player health");
             controllerPlayer.ResetHealth();
         }
-
-        
+        // Перезапуск таймера
+        if (timer != null)
+        {
+            Debug.Log("TAIMERRRERRR");
+            timer.RestartTimer();
+        }
 
     }
 
@@ -65,6 +69,7 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("Player or PlayerStart not found!");
         }
     }
+
 
     public void NextLevel()
     {
