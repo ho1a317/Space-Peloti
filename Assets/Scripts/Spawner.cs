@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public int asteroidCount;
     public float spawnInterval = 2.0f;
     public float posY;
-    
+
     [HideInInspector]
     public int asteroidNow;
 

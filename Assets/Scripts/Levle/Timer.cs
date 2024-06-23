@@ -8,11 +8,11 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 60f; // Установите нужное время
     public Text timerText; // Перетащите сюда текстовый UI элемент
 
-    private GameManager gameManager;
+    private GameOverManager gameManager;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameOverManager>();
     }
 
     private void Update()

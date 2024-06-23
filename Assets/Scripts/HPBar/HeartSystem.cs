@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Heartsystem : MonoBehaviour
 {
-    [SerializeField]
-    private int inspectorHealth; // ѕриватное поле, отображаемое в инспекторе
+    public int inspectorHealth; // ѕубличное поле дл€ начального значени€ здоровь€
 
     public static int Health { get; private set; } // ѕубличное статическое свойство
 
@@ -11,7 +10,7 @@ public class Heartsystem : MonoBehaviour
 
     void Start()
     {
-        Health = inspectorHealth; // ”станавливаем начальное значение здоровь€
+        SetHealth(inspectorHealth); // ”станавливаем начальное значение здоровь€
         LifeStart();
     }
 
@@ -86,5 +85,11 @@ public class Heartsystem : MonoBehaviour
         {
             Health = 0;
         }
+    }
+
+    // ћетод дл€ установки здоровь€ при загрузке уровн€
+    public void SetHealth(int health)
+    {
+        Health = health;
     }
 }

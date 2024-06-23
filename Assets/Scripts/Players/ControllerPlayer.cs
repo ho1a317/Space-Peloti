@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class ControllerPlayer : MonoBehaviour
 {
     public float speed;
-    public int hp;
+    public int initialHealth; // Публичное поле для начального значения здоровья
 
-    public int damage;
+    public int nowHp;
+
+    public int damage = 1;
+    public int coinValue = 1;
 
     private float derX, derY;
     public Joystick joystick;
@@ -17,14 +20,19 @@ public class ControllerPlayer : MonoBehaviour
     public Text Coin;
 
     private Rigidbody2D rb;
-    private Heartsystem heartSystem; 
-    private GameManager gameOverManager;
+    private Heartsystem heartSystem;
+    private GameOverManager gameOverManager;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         heartSystem = FindObjectOfType<Heartsystem>();
-        gameOverManager = FindObjectOfType<GameManager>();
+        gameOverManager = FindObjectOfType<GameOverManager>();
+
+        // Устанавливаем начальное значение здоровья
+        nowHp = initialHealth;
+        heartSystem.SetHealth(initialHealth);
     }
 
     private void Update()
@@ -43,7 +51,7 @@ public class ControllerPlayer : MonoBehaviour
         derY = joystick.Vertical * speed;
     }
 
-    //Damage смерть и ефекты 
+    // Обработка столкновений
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Asteroid")
@@ -56,25 +64,30 @@ public class ControllerPlayer : MonoBehaviour
             CollectorCoins();
         }
     }
-    
+
     private void CollectorCoins()
     {
-        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 1);
-        Coin.text = Convert.ToString(Convert.ToInt32(Coin.text) + 1);
-
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + coinValue);
+        Coin.text = Convert.ToString(Convert.ToInt32(Coin.text) + coinValue);
     }
 
     private void Damage()
     {
-        hp--;
-        heartSystem.TakeDamage(damage);
-        Debug.Log(hp);
+        nowHp--;
 
-        if (hp <= 0)
+        heartSystem.TakeDamage(damage);
+        Debug.Log(nowHp);
+
+        if (nowHp <= 0)
         {
             gameOverManager.Lose();
         }
     }
 
-
+    // Метод для восстановления здоровья при перезапуске уровня
+    public void ResetHealth()
+    {
+        nowHp = initialHealth;
+        heartSystem.SetHealth(initialHealth);
+    }
 }
