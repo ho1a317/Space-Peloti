@@ -5,6 +5,8 @@ public class LevelManager : MonoBehaviour
     public GameObject[] levels; // Массив уровней
     private int currentLevel = 0; // Индекс текущего уровня
 
+    public GameObject player; // Ссылка на игрока
+
     private Heartsystem heartSystem;
     private Spawner spawner;
     private ControllerPlayer controllerPlayer;
@@ -35,6 +37,9 @@ public class LevelManager : MonoBehaviour
         levels[levelIndex].SetActive(true);
         currentLevel = levelIndex;
 
+        // Перемещаем игрока в стартовую точку
+        MovePlayerToStart();
+
         Debug.Log("Level " + levelIndex + " loaded");
 
         //// Восстанавливаем здоровье
@@ -44,8 +49,22 @@ public class LevelManager : MonoBehaviour
             controllerPlayer.ResetHealth();
         }
 
+        
+
     }
 
+    void MovePlayerToStart()
+    {
+        GameObject start = GameObject.Find("PlayerStart"); // Находим GameObject стартовой точки
+        if (start != null && player != null)
+        {
+            player.transform.position = start.transform.position; // Перемещаем игрока в эту точку
+        }
+        else
+        {
+            Debug.LogError("Player or PlayerStart not found!");
+        }
+    }
 
     public void NextLevel()
     {
