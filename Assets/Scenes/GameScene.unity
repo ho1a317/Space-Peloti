@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 69119523}
   - component: {fileID: 69119522}
   m_Layer: 0
-  m_Name: Plauer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

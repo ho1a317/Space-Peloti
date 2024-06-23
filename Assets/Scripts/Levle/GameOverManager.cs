@@ -12,19 +12,16 @@ public class GameOverManager : MonoBehaviour
 
     private LevelManager levelManager;
     private Spawner spawner;
-    private Timer timer;
 
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
         spawner = FindObjectOfType<Spawner>();
-        timer = FindObjectOfType<Timer>();
 
         losePanel.SetActive(false);
         winPanel.SetActive(false);
 
         timerText.enabled = true;
-
     }
 
     public void Lose()
@@ -60,7 +57,6 @@ public class GameOverManager : MonoBehaviour
 
         winPanel.SetActive(false);
         timerText.enabled = true;
-
     }
 
     public void RetryLevel()
@@ -68,14 +64,8 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 1; // Возвращаем нормальное время
         levelManager.RestartLevel(); // Перезагрузка текущего уровня
 
-        if (timer != null)
-        {
-            timer.RestartTimer();
-        }
-
         losePanel.SetActive(false);
         timerText.enabled = true;
-
     }
 
     public void GoToMenu()
@@ -83,4 +73,5 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 1; // Возвращаем нормальное время
         SceneManager.LoadScene("MenuScene"); // Переход в меню (замените на имя вашей сцены)
     }
+
 }
