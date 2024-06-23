@@ -7,19 +7,19 @@ public class Spawner : MonoBehaviour
     public int asteroidCount;
     public float spawnInterval = 2.0f;
     public float posY;
-
+    
     [HideInInspector]
     public int asteroidNow;
 
     [SerializeField]
     private GameObject[] asteroidPrefabs;
     private GameObject asteroid;
-
-    private void Start()
+    
+    private void Update()
     {
         StartCoroutine(SpawnAsteroids());
     }
-
+    
     private IEnumerator SpawnAsteroids()
     {
         while (true)
