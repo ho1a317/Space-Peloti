@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed25bd01bf0c874db70883c210d4caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTime: 30
+  initialTime: 15
   timerText: {fileID: 6695253998638240231}
 --- !u!1 &1120573839
 GameObject:
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed25bd01bf0c874db70883c210d4caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTime: 30
+  initialTime: 10
   timerText: {fileID: 6695253998638240231}
 --- !u!1 &19086261480580273
 GameObject:
