@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class Heartsystem : MonoBehaviour
 {
-    public int inspectorHealth; // Публичное поле для начального значения здоровья
-
     public static int Health { get; private set; } // Публичное статическое свойство
 
     public GameObject Heart1, Heart2, Heart3, Heart4, Heart5;
 
     void Start()
     {
-        SetHealth(inspectorHealth); // Устанавливаем начальное значение здоровья
         LifeStart();
     }
 

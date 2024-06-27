@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class ControllerPlayer : MonoBehaviour
 {
+
     public float speed;
-    public int initialHealth; // Публичное поле для начального значения здоровья
+    public int maxHp; // Базовое максимальное значение здоровья
 
     public int nowHp;
-
     public int damage = 1;
-    public int coinValue = 1;
+
+    public int coinValue = 1; // Базовая стоимость монеты
+
 
     private float derX, derY;
     public Joystick joystick;
@@ -30,9 +32,23 @@ public class ControllerPlayer : MonoBehaviour
         heartSystem = FindObjectOfType<Heartsystem>();
         gameOverManager = FindObjectOfType<GameOverManager>();
 
+        // Применение улучшений
+        ApplyUpgrades();
+
         // Устанавливаем начальное значение здоровья
-        nowHp = initialHealth;
-        heartSystem.SetHealth(initialHealth);
+        // nowHp = maxHp;
+        heartSystem.SetHealth(maxHp);
+    }
+
+    private void ApplyUpgrades()
+    {
+        int healthUpgrades = PlayerPrefs.GetInt("HealthLevel", 0);
+        int coinValueUpgrades = PlayerPrefs.GetInt("CoinValueLevel", 0);
+        int speedUpgrades = PlayerPrefs.GetInt("SpeedLevel", 0);
+
+        maxHp += healthUpgrades;
+        coinValue += coinValueUpgrades;
+        speed += speedUpgrades;
     }
 
     private void Update()
@@ -87,7 +103,7 @@ public class ControllerPlayer : MonoBehaviour
     // Метод для восстановления здоровья при перезапуске уровня
     public void ResetHealth()
     {
-        nowHp = initialHealth;
-        heartSystem.SetHealth(initialHealth);
+        nowHp = maxHp;
+        heartSystem.SetHealth(maxHp);
     }
 }

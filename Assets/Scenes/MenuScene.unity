@@ -907,6 +907,66 @@ MonoBehaviour:
   - {fileID: 757583505}
   - {fileID: 549741687}
   - {fileID: 1303948343}
+--- !u!1 &263055452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263055454}
+  - component: {fileID: 263055453}
+  m_Layer: 0
+  m_Name: ShopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &263055453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263055452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2fa4caac4a28747ae70c17fc92a528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUpgradeCost: 1
+  coinValueUpgradeCost: 1
+  speedUpgradeCost: 1
+  healthUpgradeIcons:
+  - {fileID: 1248193397}
+  - {fileID: 741380838}
+  - {fileID: 844838280}
+  coinValueUpgradeIcons:
+  - {fileID: 1552949947}
+  - {fileID: 1746550692}
+  - {fileID: 979344856}
+  speedUpgradeIcons:
+  - {fileID: 778819913}
+  - {fileID: 596121767}
+  - {fileID: 1020700650}
+  playerCoinsText: {fileID: 1275973008}
+--- !u!4 &263055454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263055452}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &269025269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,15 +2450,15 @@ RectTransform:
   m_GameObject: {fileID: 540384556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39000002, y: 0.39000002, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1081019718}
+  m_Father: {fileID: 642323357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -315.04446, y: -521.2488}
-  m_SizeDelta: {x: -1126.0867, y: -1184.0945}
+  m_AnchoredPosition: {x: -0.00036621094, y: -1.3283081}
+  m_SizeDelta: {x: 499.09985, y: 180.55518}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540384558
 MonoBehaviour:
@@ -2755,7 +2815,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 540384557}
   m_Father: {fileID: 1081019718}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24178591, y: 0.09854699}
@@ -2806,7 +2867,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 642323359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 263055453}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: BuySpeedUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &642323359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4050,7 +4123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1038783886}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 263055453}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: BuyCoinValueUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1038783886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4246,7 +4331,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1061196052}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 263055453}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: BuyHealthUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1061196052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,7 +4544,6 @@ RectTransform:
   - {fileID: 1061196050}
   - {fileID: 1038783884}
   - {fileID: 642323357}
-  - {fileID: 540384557}
   m_Father: {fileID: 382073923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.33860812}
@@ -6633,3 +6729,4 @@ SceneRoots:
   - {fileID: 537399165}
   - {fileID: 236602372}
   - {fileID: 1065929379}
+  - {fileID: 263055454}
