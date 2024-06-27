@@ -15,9 +15,9 @@ public class LevelManager : MonoBehaviour
         heartSystem = FindObjectOfType<Heartsystem>();
         controllerPlayer = FindObjectOfType<ControllerPlayer>();
 
-        // Загружаем последний пройденный уровень
-        currentLevel = PlayerPrefs.GetInt("LastCompletedLevel", 0);
-        LoadLevel(currentLevel); // Загружаем первый уровеньк Покашто
+        // Загружаем выбранный уровень из PlayerPrefs
+        currentLevel = PlayerPrefs.GetInt("SelectedLevel", 0);
+        LoadLevel(currentLevel);
     }
 
     public void LoadLevel(int levelIndex)
@@ -29,16 +29,23 @@ public class LevelManager : MonoBehaviour
         }
 
         // Активируем нужный уровень
-        levels[levelIndex].SetActive(true);
-        currentLevel = levelIndex;
+        if (levelIndex >= 0 && levelIndex < levels.Length)
+        {
+            levels[levelIndex].SetActive(true);
+            currentLevel = levelIndex;
+        }
+        else
+        {
+            Debug.LogError("Invalid level index: " + levelIndex);
+            return;
+        }
+
         // Перемещаем игрока в стартовую точку
         MovePlayerToStart();
-
 
         // Восстанавливаем здоровье
         if (controllerPlayer != null)
         {
-            Debug.Log("Resetting player health");
             controllerPlayer.ResetHealth();
         }
 
@@ -46,7 +53,6 @@ public class LevelManager : MonoBehaviour
         Timer timer = levels[levelIndex].GetComponentInChildren<Timer>();
         if (timer != null)
         {
-            Debug.Log("Restarting timer");
             timer.RestartTimer();
         }
     }
@@ -81,7 +87,6 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        Debug.Log("Restarting level"); // Отладочное сообщение
         LoadLevel(currentLevel);
     }
 

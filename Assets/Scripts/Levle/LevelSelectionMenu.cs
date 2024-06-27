@@ -30,6 +30,7 @@ public class LevelSelectionMenu : MonoBehaviour
         PlayerPrefs.SetInt("SelectedLevel", levelIndex);
         PlayerPrefs.Save();
 
+
         // Загружаем сцену Game
         SceneManager.LoadScene("GameScene");
     }
