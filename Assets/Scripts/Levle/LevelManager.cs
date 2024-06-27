@@ -14,6 +14,9 @@ public class LevelManager : MonoBehaviour
     {
         heartSystem = FindObjectOfType<Heartsystem>();
         controllerPlayer = FindObjectOfType<ControllerPlayer>();
+
+        // Загружаем последний пройденный уровень
+        currentLevel = PlayerPrefs.GetInt("LastCompletedLevel", 0);
         LoadLevel(currentLevel); // Загружаем первый уровеньк Покашто
     }
 
@@ -72,6 +75,7 @@ public class LevelManager : MonoBehaviour
         if (nextLevel < levels.Length)
         {
             LoadLevel(nextLevel);
+            SaveProgress(nextLevel); // Сохраняем прогресс
         }
         else
         {
@@ -84,5 +88,16 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Restarting level"); // Отладочное сообщение
         LoadLevel(currentLevel);
+    }
+
+    private void SaveProgress(int levelIndex)
+    {
+        PlayerPrefs.SetInt("LastCompletedLevel", levelIndex);
+        PlayerPrefs.Save();
+    }
+
+    public int GetLastCompletedLevel()
+    {
+        return PlayerPrefs.GetInt("LastCompletedLevel", 0); // По умолчанию 0 (первый уровень)
     }
 }
