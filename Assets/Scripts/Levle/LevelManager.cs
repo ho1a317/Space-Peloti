@@ -22,11 +22,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(int levelIndex)
     {
-        //if (levelIndex < 0 || levelIndex >= levels.Length)
-        //{
-        //    return;
-        //}
-
         // Деактивируем все уровни
         foreach (GameObject level in levels)
         {
