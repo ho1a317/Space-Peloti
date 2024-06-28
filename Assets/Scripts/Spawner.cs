@@ -7,7 +7,6 @@ public class Spawner : MonoBehaviour
     public float spawnInterval = 2.0f;
     public float posY;
     
-    [HideInInspector]
     public int asteroidNow;
 
     [SerializeField]

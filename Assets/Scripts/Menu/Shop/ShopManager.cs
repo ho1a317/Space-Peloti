@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.DeleteKey("HealthLevel");
         LoadUpgrades();
         UpdateUI();
     }
@@ -37,7 +38,6 @@ public class ShopManager : MonoBehaviour
         else
         {
             Debug.Log("Limit reached for health upgrades");
-            // Анимация или уведомление о лимите
         }
     }
 
@@ -56,7 +56,6 @@ public class ShopManager : MonoBehaviour
         else
         {
             Debug.Log("Limit reached for coin value upgrades");
-            // Анимация или уведомление о лимите
         }
     }
 
@@ -75,7 +74,6 @@ public class ShopManager : MonoBehaviour
         else
         {
             Debug.Log("Limit reached for speed upgrades");
-            // Анимация или уведомление о лимите
         }
     }
 

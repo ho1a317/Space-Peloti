@@ -7,6 +7,9 @@ TagManager:
   - Finesh
   - Asteroid
   - Coin
+  - VolumeSlider
+  - TextVolume
+  - AudiClone
   layers:
   - Default
   - TransparentFX
