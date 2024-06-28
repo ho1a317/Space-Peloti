@@ -3,15 +3,15 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float initialTime = 60f; // Начальное время таймера
-    public Text timerText; // Текстовый UI элемент
+    public float initialTime = 60f;
+    public Text timerText;
 
     private float timeRemaining;
     private bool isRunning;
 
     private void Start()
     {
-        RestartTimer(); // Инициализация таймера
+        RestartTimer();
     }
 
     private void Update()

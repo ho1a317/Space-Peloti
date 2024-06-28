@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
-    public GameObject winPanel; // Панель победы
-    public GameObject losePanel; // Панель поражения
+    public GameObject winPanel;
+    public GameObject losePanel;
     public Text timerText;
 
     private LevelManager levelManager;
@@ -31,7 +29,7 @@ public class GameOverManager : MonoBehaviour
 
         if (spawner != null)
         {
-            spawner.DestroyAllObjects(); // Уничтожаем все объекты, созданные Spawner
+            spawner.DestroyAllObjects();
         }
 
         timerText.enabled = false;
@@ -44,7 +42,7 @@ public class GameOverManager : MonoBehaviour
 
         if (spawner != null)
         {
-            spawner.DestroyAllObjects(); // Уничтожаем все объекты, созданные Spawner
+            spawner.DestroyAllObjects();
         }
 
         timerText.enabled = false;
@@ -52,8 +50,8 @@ public class GameOverManager : MonoBehaviour
 
     public void NextLevel()
     {
-        Time.timeScale = 1; // Возвращаем нормальное время
-        levelManager.NextLevel(); // Переход на следующий уровень
+        Time.timeScale = 1;
+        levelManager.NextLevel();
 
         winPanel.SetActive(false);
         timerText.enabled = true;
@@ -61,8 +59,8 @@ public class GameOverManager : MonoBehaviour
 
     public void RetryLevel()
     {
-        Time.timeScale = 1; // Возвращаем нормальное время
-        levelManager.RestartLevel(); // Перезагрузка текущего уровня
+        Time.timeScale = 1;
+        levelManager.RestartLevel();
 
         losePanel.SetActive(false);
         timerText.enabled = true;
@@ -70,8 +68,8 @@ public class GameOverManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        Time.timeScale = 1; // Возвращаем нормальное время
-        SceneManager.LoadScene("MenuScene"); // Переход в меню (замените на имя вашей сцены)
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuScene");
     }
 
 }

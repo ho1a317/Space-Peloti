@@ -936,9 +936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2fa4caac4a28747ae70c17fc92a528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthUpgradeCost: 1
-  coinValueUpgradeCost: 1
-  speedUpgradeCost: 1
+  healthUpgradeCost: 100
+  coinValueUpgradeCost: 200
+  speedUpgradeCost: 250
   healthUpgradeIcons:
   - {fileID: 1248193397}
   - {fileID: 741380838}
@@ -4872,7 +4872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 250
 --- !u!222 &1222064248
 CanvasRenderer:
   m_ObjectHideFlags: 0

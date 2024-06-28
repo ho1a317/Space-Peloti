@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +6,12 @@ public class ControllerPlayer : MonoBehaviour
 {
 
     public float speed;
-    public int maxHp; // Базовое максимальное значение здоровья
+    public int maxHp;
 
     public int nowHp;
     public int damage = 1;
 
-    public int coinValue = 1; // Базовая стоимость монеты
+    public int coinValue = 1;
 
 
     private float derX, derY;
@@ -32,11 +30,8 @@ public class ControllerPlayer : MonoBehaviour
         heartSystem = FindObjectOfType<Heartsystem>();
         gameOverManager = FindObjectOfType<GameOverManager>();
 
-        // Применение улучшений
         ApplyUpgrades();
 
-        // Устанавливаем начальное значение здоровья
-        // nowHp = maxHp;
         heartSystem.SetHealth(maxHp);
     }
 
@@ -67,7 +62,6 @@ public class ControllerPlayer : MonoBehaviour
         derY = joystick.Vertical * speed;
     }
 
-    // Обработка столкновений
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Asteroid")
@@ -92,7 +86,6 @@ public class ControllerPlayer : MonoBehaviour
         nowHp--;
 
         heartSystem.TakeDamage(damage);
-        Debug.Log(nowHp);
 
         if (nowHp <= 0)
         {
@@ -100,7 +93,6 @@ public class ControllerPlayer : MonoBehaviour
         }
     }
 
-    // Метод для восстановления здоровья при перезапуске уровня
     public void ResetHealth()
     {
         nowHp = maxHp;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Heartsystem : MonoBehaviour
 {
-    public static int Health { get; private set; } // Публичное статическое свойство
+    public static int Health { get; private set; }
 
     public GameObject Heart1, Heart2, Heart3, Heart4, Heart5;
 
@@ -74,7 +74,7 @@ public class Heartsystem : MonoBehaviour
         }
     }
 
-    // Метод для уменьшения здоровья, который можно вызывать из других скриптов
+    
     public void TakeDamage(int damage)
     {
         Health -= damage;
@@ -84,7 +84,7 @@ public class Heartsystem : MonoBehaviour
         }
     }
 
-    // Метод для установки здоровья при загрузке уровня
+    
     public void SetHealth(int health)
     {
         Health = health;

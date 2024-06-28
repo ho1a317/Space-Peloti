@@ -7,10 +7,10 @@ public class MenuManager : MonoBehaviour
 
     public void PlayeGame()
     {
-        int lastCompletedLevel = PlayerPrefs.GetInt("LastCompletedLevel", 0); // Получаем последний пройденный уровень
-        PlayerPrefs.SetInt("SelectedLevel", lastCompletedLevel); // Сохраняем выбранный уровень
+        int lastCompletedLevel = PlayerPrefs.GetInt("LastCompletedLevel", 0);
+        PlayerPrefs.SetInt("SelectedLevel", lastCompletedLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("GameScene"); // Загружаем сцену Game
+        SceneManager.LoadScene("GameScene");
     }
 
     public void ExitGame()

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject[] levels; // Массив уровней
-    private int currentLevel = 0; // Индекс текущего уровня
+    public GameObject[] levels;
+    private int currentLevel = 0;
 
-    public GameObject player; // Ссылка на игрока
+    public GameObject player;
 
     private Heartsystem heartSystem;
     private ControllerPlayer controllerPlayer;
@@ -15,20 +15,17 @@ public class LevelManager : MonoBehaviour
         heartSystem = FindObjectOfType<Heartsystem>();
         controllerPlayer = FindObjectOfType<ControllerPlayer>();
 
-        // Загружаем выбранный уровень из PlayerPrefs
         currentLevel = PlayerPrefs.GetInt("SelectedLevel", 0);
         LoadLevel(currentLevel);
     }
 
     public void LoadLevel(int levelIndex)
     {
-        // Деактивируем все уровни
         foreach (GameObject level in levels)
         {
             level.SetActive(false);
         }
 
-        // Активируем нужный уровень
         if (levelIndex >= 0 && levelIndex < levels.Length)
         {
             levels[levelIndex].SetActive(true);
@@ -40,16 +37,13 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        // Перемещаем игрока в стартовую точку
         MovePlayerToStart();
 
-        // Восстанавливаем здоровье
         if (controllerPlayer != null)
         {
             controllerPlayer.ResetHealth();
         }
 
-        // Перезапуск таймера
         Timer timer = levels[levelIndex].GetComponentInChildren<Timer>();
         if (timer != null)
         {
@@ -59,10 +53,10 @@ public class LevelManager : MonoBehaviour
 
     void MovePlayerToStart()
     {
-        GameObject start = GameObject.Find("PlayerStart"); // Находим GameObject стартовой точки
+        GameObject start = GameObject.Find("PlayerStart");
         if (start != null && player != null)
         {
-            player.transform.position = start.transform.position; // Перемещаем игрока в эту точку
+            player.transform.position = start.transform.position;
         }
         else
         {
@@ -76,12 +70,11 @@ public class LevelManager : MonoBehaviour
         if (nextLevel < levels.Length)
         {
             LoadLevel(nextLevel);
-            SaveProgress(nextLevel); // Сохраняем прогресс
+            SaveProgress(nextLevel);
         }
         else
         {
-            Debug.Log("All levels completed");
-            // Реализовать логику конца игры или возвращение в меню
+            RestartLevel();
         }
     }
 
@@ -98,6 +91,6 @@ public class LevelManager : MonoBehaviour
 
     public int GetLastCompletedLevel()
     {
-        return PlayerPrefs.GetInt("LastCompletedLevel", 0); // По умолчанию 0 (первый уровень)
+        return PlayerPrefs.GetInt("LastCompletedLevel", 0);
     }
 }

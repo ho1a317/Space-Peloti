@@ -7,9 +7,9 @@ public class ShopManager : MonoBehaviour
     public int coinValueUpgradeCost = 150;
     public int speedUpgradeCost = 200;
 
-    public GameObject[] healthUpgradeIcons; // Массив значков улучшения здоровья
-    public GameObject[] coinValueUpgradeIcons; // Массив значков улучшения стоимости монет
-    public GameObject[] speedUpgradeIcons; // Массив значков улучшения скорости
+    public GameObject[] healthUpgradeIcons;
+    public GameObject[] coinValueUpgradeIcons;
+    public GameObject[] speedUpgradeIcons;
     public Text playerCoinsText;
 
     private int healthLevel;
@@ -100,11 +100,11 @@ public class ShopManager : MonoBehaviour
         {
             if (i < level)
             {
-                icons[i].SetActive(true); // Включаем цветные значки
+                icons[i].SetActive(true);
             }
             else
             {
-                icons[i].SetActive(false); // Отключаем серые значки
+                icons[i].SetActive(false);
             }
         }
     }
