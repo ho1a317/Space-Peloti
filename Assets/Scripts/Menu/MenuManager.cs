@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject menuLevel, menuShop, menuSettings;
+    public GameObject menuLevel, menuShop, menuSettings , menuIngame;
 
     public void PlayeGame()
     {
@@ -33,10 +33,16 @@ public class MenuManager : MonoBehaviour
         menuSettings.SetActive(true);
     }
 
+    public void OpenMenuIngame()
+    {
+        menuIngame.SetActive(true);
+    }
+
     public void ExitMenu()
     {
         menuLevel.SetActive(false);
         menuShop.SetActive(false);
         menuSettings.SetActive(false);
+        menuIngame.SetActive(false);
     }
 }
