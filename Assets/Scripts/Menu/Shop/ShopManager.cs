@@ -18,7 +18,6 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteKey("HealthLevel");
         LoadUpgrades();
         UpdateUI();
     }
